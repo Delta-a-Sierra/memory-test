@@ -1,12 +1,23 @@
+import React, {useState, useEffect} from 'react'
 import './App.scss';
 import Header from './components/header/Header'
 import CardContainer from './components/cardContainer/CardContainer'
 
 function App() {
+  const [score, setScore] = useState(0)
+
+  const increaseScore = () => {
+    setScore(score + 1)
+  }
+
+  const resetScore = () => {
+    setScore(0)
+  }
+
   return (
     <div className="App">
-      <Header />
-      <CardContainer />
+      <Header score={score}/>
+      <CardContainer increaseScore={increaseScore} resetScore={resetScore}/>
     </div>
   );
 }

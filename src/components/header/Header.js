@@ -5,21 +5,12 @@ import ScoreBoard from '../scoreboard/ScoreBoard'
 
 
 export default function Header(props){
-    const [score, setScore] = useState(0)
-
-    const increaseScore = () => {
-        setScore(score + 1)
-    }
-
-    const resetScore = () => {
-        setScore(0)
-    }
 
     return(
         <div className="Header">
             <GithubHeader />
             <h1>Web Tech <br/> Memory Test</h1>
-            <ScoreBoard score={score}/>
+            <ScoreBoard score={props.score}/>
 
             {/* <div>
                 <button onClick={increaseScore}>Increase Score</button>
