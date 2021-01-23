@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+.ScoreBoard{
+    width: 90vw;
+    height: 7vh;
+    background-color: var(--accent-2);
+    border-radius: 2rem;
+    display: flex;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    color: var(--accent-1);
+    font-size: 16px;
+    
+
+    div{
+        width: 50%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .current-score{
+        border-right: 1px solid var(--accent-1)
+    }
+
+    .best-score{
+        border-left: 1px solid var(--accent-1);
+    }
+
+}

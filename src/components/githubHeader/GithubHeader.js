@@ -1,6 +1,6 @@
 import React from 'react'
 import './style.scss'
-import githubIcon from '../../util/icons/git.svg'
+import githubIcon from '../../util/icons/github.svg'
 
 export default function GithubHeader(props){
 
