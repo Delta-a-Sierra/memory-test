@@ -14,7 +14,7 @@ export default function ScoreBoard(props){
 
         changeTopScore(props.score)
 
-    },[props.score]) 
+    },[props.score, topScore]) 
 
 
     return(

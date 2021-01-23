@@ -10,3 +10,11 @@ body{
     font-weight: normal;
     background-color: var(--bg-color);
 }
+
+.App{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

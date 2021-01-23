@@ -1,0 +1,32 @@
+.Card{
+    width: 90%;
+    height: 126px;
+    background-color: #5ca8cf;
+    border-radius: 1rem;
+    justify-self: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1rem;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.3);
+    color: white;
+    font-weight: bold;
+    letter-spacing: 1px;
+
+    &:hover{
+        transform: scale(1.1);
+        transition: ease-in-out 0.2s;
+    }
+
+
+    img{
+        width: 4rem;
+        height: 4rem;
+        color: white;
+    }
+
+    p{
+        padding-bottom: 0.5rem;
+    }
+}
