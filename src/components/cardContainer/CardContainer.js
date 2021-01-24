@@ -55,7 +55,7 @@ function hasSelected(card, isSelected = true) {
 }
 
 export default function CardContainer({resetScore, increaseScore}) {
-    const [cardList, setCardList] = useState(cards)
+    const [cardList, setCardList] = useState(() => cards)
 
     const deselectAllCards = () => {
         const tempList = cardList.map((card) => {
