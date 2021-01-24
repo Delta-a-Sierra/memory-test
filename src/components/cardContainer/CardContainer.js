@@ -16,76 +16,84 @@ import sassLogo from '../../util/icons/sass.svg'
 import typeScriptLogo from '../../util/icons/typescript.svg'
 import WebpackLogo from '../../util/icons/webpack.svg'
 
+const shuffle = (array) => {
+    let currentIndex = array.length, temporaryValue, randomIndex;
+    while (0 !== currentIndex) {
 
-export default function CardContainer(props){
-    const [cardList, setCardList] = useState([
-        {image: javascriptLogo, name: "JavaScript", key: uuid(), selected: false},
-        {image: cssLogo, name: "CSS", key: uuid(), selected: false},
-        {image: gitLogo, name: "GIT", key: uuid(), selected: false},
-        {image: graphqlLogo, name: "GraphQL", key: uuid(), selected: false},
-        {image: htmlLogo, name: "HTML", key: uuid(), selected: false},
-        {image: nodeJsLogo, name: "Node Js", key: uuid(), selected: false},
-        {image: npmLogo, name: "NPM", key: uuid(), selected: false},
-        {image: reactLogo, name: "React", key: uuid(), selected: false},
-        {image: reduxLogo, name: "Redux", key: uuid(), selected: false},
-        {image: sassLogo, name: "Sass", key: uuid(), selected: false},
-        {image: typeScriptLogo, name: "TypeScript", key: uuid(), selected: false},
-        {image: WebpackLogo, name: "Webpack", key: uuid(), selected: false}
-    ])
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
 
-    const shuffle = (array) => {
-        var currentIndex = array.length, temporaryValue, randomIndex;
-        while (0 !== currentIndex) {
-      
-          randomIndex = Math.floor(Math.random() * currentIndex);
-          currentIndex -= 1;
-      
-          temporaryValue = array[currentIndex];
-          array[currentIndex] = array[randomIndex];
-          array[randomIndex] = temporaryValue;
-        }
-        return array;
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+    }
+    return array;
+}
+
+const getCard = (card, handleCardClick) => <Card {...card} alt={`${card.name} logo`} selected={card.selected}
+                                                 onClick={() => handleCardClick(card.key)}/>;
+
+const cards = [
+    {image: javascriptLogo, name: "JavaScript", key: uuid(), selected: false},
+    {image: cssLogo, name: "CSS", key: uuid(), selected: false},
+    {image: gitLogo, name: "GIT", key: uuid(), selected: false},
+    {image: graphqlLogo, name: "GraphQL", key: uuid(), selected: false},
+    {image: htmlLogo, name: "HTML", key: uuid(), selected: false},
+    {image: nodeJsLogo, name: "Node Js", key: uuid(), selected: false},
+    {image: npmLogo, name: "NPM", key: uuid(), selected: false},
+    {image: reactLogo, name: "React", key: uuid(), selected: false},
+    {image: reduxLogo, name: "Redux", key: uuid(), selected: false},
+    {image: sassLogo, name: "Sass", key: uuid(), selected: false},
+    {image: typeScriptLogo, name: "TypeScript", key: uuid(), selected: false},
+    {image: WebpackLogo, name: "Webpack", key: uuid(), selected: false}
+];
+
+function hasSelected(card, isSelected = true) {
+    const tempCard = {...card}
+    tempCard.selected = isSelected
+    return tempCard
+}
+
+export default function CardContainer({resetScore, increaseScore}) {
+    const [cardList, setCardList] = useState(cards)
+
+    const deselectAllCards = () => {
+        const tempList = cardList.map((card) => {
+            return hasSelected(card, false);
+        })
+        setCardList(tempList)
     }
 
-    const cardClick = (key) => {
-        const resetList = () => {
-            const tempList = cardList.map((card) => {
-                const tempCard = Object.assign({}, card)
-                tempCard.selected = false
-                return tempCard
-            })
-            setCardList(tempList)
-        }
+    const updateCard = (key) => {
+        const tempList = cardList.map((card) => {
+            if (card.key === key) {
+                return hasSelected(card)
+            }
+            return card
+        })
+        setCardList(tempList)
+    }
 
-        const updateCard = (key) => {
-            const tempList = cardList.map((card) => {
-                if(card.key === key){
-                    const tempCard = Object.assign({}, card)
-                    tempCard.selected = true
-                    return tempCard
-                }
-                return card
-            })
-            setCardList(tempList)
-        }
+    const handleCardClick = (key) => {
+        deselectAllCards()
+        updateCard(key)
 
+        const clickedCard = cardList.find((card) => card.key === key)
 
-        const clickedCard = cardList.filter((card) => card.key === key)[0]
-        if(clickedCard.selected === true){
-            props.resetScore()
-            resetList()
+        if (clickedCard.selected) {
+            resetScore()
+            deselectAllCards()
             return null
         }
-        props.increaseScore()
+
+        increaseScore()
         updateCard(key)
     }
 
-    const cards = shuffle(cardList.map((card) => <Card {...card} alt={`${card.name} logo`} selected={card.selected} onClick={() => cardClick(card.key)}/>))
-    
-    return(
+    return (
         <div className="CardContainer">
-            <div className="cards"> 
-                {cards}
+            <div className="cards">
+                {shuffle(cardList.map((card) => getCard(card, handleCardClick)))}
             </div>
         </div>
     )

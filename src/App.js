@@ -7,7 +7,7 @@ function App() {
   const [score, setScore] = useState(0)
 
   const increaseScore = () => {
-    setScore(score + 1)
+    setScore(prev => prev + 1)
   }
 
   const resetScore = () => {
