@@ -7,6 +7,10 @@
     width: fit-content;
     height: fit-content;
 
+    a{
+        text-decoration: none;
+    }
+
     .github-logo{
         width: 2em;
         height: 2em;
@@ -18,4 +22,14 @@
         color: white;
         font-weight: normal;
     }
+}
+
+@media only screen and (min-width: 1024px){
+    .GithubHeader{
+        .github-logo{
+            width: 3em;
+            height: 3em;
+        }
+    }
+
 }

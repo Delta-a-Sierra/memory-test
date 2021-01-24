@@ -23,3 +23,22 @@
         }
     }
 }
+
+@media only screen and (min-width: 1024px){
+    .CardContainer{
+        display: flex;
+        height: 100%;
+        overflow: hidden;
+        justify-content: center;
+        align-items: center;
+        .cards{
+            height: fit-content;
+            grid-template-columns: 16% 16% 16% 16% 16% 16%;
+            row-gap: 8rem;
+            grid-auto-rows: minmax(min-content, max-content);
+            &::after{
+                display: none;
+            }
+        }
+    }
+}
