@@ -1,4 +1,4 @@
-import React,{useState, useEffect} from 'react';
+import React from 'react';
 import './style.scss'
 import GithubHeader from '../githubHeader/GithubHeader'
 import ScoreBoard from '../scoreboard/ScoreBoard'

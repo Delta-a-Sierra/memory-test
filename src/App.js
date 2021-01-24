@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import './App.scss';
 import Header from './components/header/Header'
 import CardContainer from './components/cardContainer/CardContainer'
