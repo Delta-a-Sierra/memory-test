@@ -8,7 +8,7 @@ pipeline{
 
         stage("install python2"){
             steps{
-               sh "sudo apt install python2"
+               sh "apt install python2"
             }
         }
         stage("install dependencies"){
