@@ -8,12 +8,12 @@ pipeline{
 
         stage("install python2"){
             steps{
-               sh "sudo apt install python2"
+               sh " apk add python2"
             //    sh "sudo apt install python3"
             }
         }
         stage("install dependencies"){
-            steps{
+            steps{sss
                sh "npm install"
             }
         }
