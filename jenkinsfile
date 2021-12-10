@@ -13,7 +13,7 @@ pipeline{
             }
         }
         stage("install dependencies"){
-            steps{sss
+            steps{
                sh "npm install"
             }
         }
