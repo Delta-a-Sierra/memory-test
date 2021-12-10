@@ -5,6 +5,12 @@ pipeline{
     }
     tools{ nodejs "NodeJS"}
     stages{
+
+        stage("install python2"){
+            steps{
+               sh "sudo apt install python2"
+            }
+        }
         stage("install dependencies"){
             steps{
                sh "npm install"
