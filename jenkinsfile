@@ -3,34 +3,20 @@ pipeline{
     triggers {
         pollSCM '* * * * *'
     }
- 
+    tools{ nodejs "node"}
     stages{
-        stage("A"){
+        stage("install dependencies"){
             steps{
-                echo "========executing A========"
-            }
-            post{
-                always{
-                    echo "========always========"
-                }
-                success{
-                    echo "========A executed successfully========"
-                }
-                failure{
-                    echo "========A execution failed========"
-                }
+               sh "npm install"
             }
         }
     }
-    post{
-        always{
-            echo "========always========"
-        }
-        success{
-            echo "========pipeline executed successfully ========"
-        }
-        failure{
-            echo "========pipeline execution failed========"
+    stages{
+        stage("npm build"){
+            steps{
+               sh "npm build"
+            }
         }
     }
+    
 }
