@@ -3,7 +3,7 @@ pipeline{
     triggers {
         pollSCM '* * * * *'
     }
-    tools{ nodejs "node"}
+    tools{ nodejs "NodeJS"}
     stages{
         stage("install dependencies"){
             steps{
